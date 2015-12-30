@@ -1,0 +1,8 @@
+[supervisord]
+nodaemon=true
+
+{% for program in supervisor_programs %}
+[program:{{ program.name }}]
+command={{ program.command }}
+
+{% endfor %}

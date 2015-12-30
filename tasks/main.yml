@@ -1,0 +1,8 @@
+---
+- name: Download and install supervisor
+  apt: name={{ item }} state=present
+  with_items:
+    - supervisor
+
+- name: Copy /etc/supervisor/conf.d/supervisord.conf
+  template: src=supervisord.conf.j2 dest=/etc/supervisor/conf.d/supervisord.conf
