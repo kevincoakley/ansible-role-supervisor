@@ -2,7 +2,8 @@
 galaxy_info:
   author: Kevin Coakley
   description: Install and configure supervisord
-  min_ansible_version: 1.6
+  license: GPLv2
+  min_ansible_version: 1.9
   platforms:
   - name: Ubuntu
     versions:
@@ -11,4 +12,7 @@ galaxy_info:
   - name: EL
     versions:
     - 7
+  galaxy_tags:
+    - docker
+    - deployment
 dependencies: []
