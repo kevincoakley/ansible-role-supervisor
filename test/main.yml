@@ -1,0 +1,37 @@
+---
+- name: Start the Docker containers
+  hosts: localhost
+  gather_facts: false
+
+  vars_files:
+    - docker_containers.yml
+
+  roles:
+    - docker-start
+
+
+- name: Test the supervisor role
+  hosts: all
+  become: yes
+  become_method: sudo
+
+  vars:
+    supervisor_programs:
+      - name: ls
+        command: ls -al
+      - name: du
+        command: du -h
+
+  roles:
+    - ansible-role-supervisor
+
+
+- name: Stop the Docker containers
+  hosts: localhost
+  gather_facts: false
+
+  vars_files:
+    - docker_containers.yml
+
+  roles:
+    - docker-stop

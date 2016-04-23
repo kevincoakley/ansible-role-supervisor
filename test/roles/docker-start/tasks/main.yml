@@ -1,0 +1,20 @@
+- name: Start the Docker containers
+  local_action:
+    module: docker
+    name: "{{ item['name'] }}"
+    image: "{{ item['image'] }}"
+    privileged: true
+    state: reloaded
+    use_tls: encrypt
+    ports:
+      - "{{ item['ssh_port'] }}:22"
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup"
+  with_items: "{{ docker_containers }}"
+
+- name: Wait for ssh
+  wait_for:
+    host: 192.168.99.100
+    port: "{{ item['ssh_port'] }}"
+    timeout: 30
+  with_items: "{{ docker_containers }}"
