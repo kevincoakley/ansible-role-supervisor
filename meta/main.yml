@@ -2,7 +2,7 @@
 galaxy_info:
   author: Kevin Coakley
   description: Install and configure supervisord
-  license: GPLv2
+  license: BSD
   min_ansible_version: 1.9
   platforms:
   - name: Ubuntu
