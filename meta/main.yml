@@ -7,4 +7,8 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - trusty
+    - xenial
+  - name: EL
+    versions:
+    - 7
 dependencies: []
