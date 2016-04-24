@@ -1,6 +1,8 @@
 Ansible Role: Supervisor
 ========================
 
+[![Build Status](https://travis-ci.org/kevincoakley/ansible-role-supervisor.svg?branch=master)](https://travis-ci.org/kevincoakley/ansible-role-supervisor)
+
 Ansible role to install and manage supervisord
 
 Requirements
