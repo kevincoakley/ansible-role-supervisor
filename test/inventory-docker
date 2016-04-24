@@ -1,0 +1,8 @@
+[all:vars]
+ansible_connection=ssh
+ansible_user=root
+ansible_ssh_pass=docker
+
+[all]
+ubuntu ansible_ssh_host=127.0.0.1 ansible_port=2222
+centos ansible_ssh_host=127.0.0.1 ansible_port=2224
