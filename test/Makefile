@@ -10,4 +10,4 @@ ifeq ($(UNAME_S),Darwin)
 endif
 
 all:
-	ansible-playbook -i $(INVENTORY) main.yml
+	ansible-playbook -i $(INVENTORY) main.yml -vvvv
