@@ -14,7 +14,7 @@
 
 - name: Wait for ssh
   wait_for:
-    host: 192.168.99.100
+    host: "{{ ansible_host }}"
     port: "{{ item['ssh_port'] }}"
     timeout: 30
   with_items: "{{ docker_containers }}"
