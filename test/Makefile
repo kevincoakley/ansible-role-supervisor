@@ -1,5 +1,7 @@
 .PHONY: main
 
+DEBUG =
+
 INVENTORY 				:=
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
@@ -9,5 +11,10 @@ ifeq ($(UNAME_S),Darwin)
     INVENTORY += inventory-docker-machine
 endif
 
-all:
-	ansible-playbook -i $(INVENTORY) main.yml -vvvv
+all: executable
+
+debug: DEBUG = -vvvv
+debug: executable
+
+executable:
+	ansible-playbook -i $(INVENTORY) main.yml $(DEBUG)
