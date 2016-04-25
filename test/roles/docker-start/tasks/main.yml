@@ -12,7 +12,10 @@
       - "/sys/fs/cgroup:/sys/fs/cgroup"
   with_items: "{{ docker_containers }}"
 
-- name: Wait for ssh
+- name: Give the containers time to start sshd
+  pause: seconds=5
+
+- name: Verify sshd has started
   wait_for:
     host: "{{ ansible_host }}"
     port: "{{ item['ssh_port'] }}"
