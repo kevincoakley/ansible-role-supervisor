@@ -11,5 +11,5 @@ endif
 
 all:
 	ansible-playbook -i $(INVENTORY) -l centos,localhost main.yml -vvvv
-	ansible-playbook -i $(INVENTORY) -l ubuntu,localhost main.yml -vvvv
+	#ansible-playbook -i $(INVENTORY) -l ubuntu,localhost main.yml -vvvv
 
