@@ -6,7 +6,14 @@
   vars_files:
     - docker_containers.yml
 
+  vars:
+    - container_state: started
+    - container_privileged: true
+
   roles:
+    - docker
+
+  tags:
     - docker-start
 
 
@@ -19,11 +26,15 @@
     supervisor_programs:
       - name: ls
         command: ls -al
+        directory: /var/
       - name: du
         command: du -h
 
   roles:
     - ansible-role-supervisor
+
+  tags:
+    - supervisor
 
 
 - name: Stop the Docker containers
@@ -33,5 +44,11 @@
   vars_files:
     - docker_containers.yml
 
+  vars:
+    - container_state: absent
+
   roles:
+    - docker
+
+  tags:
     - docker-stop
