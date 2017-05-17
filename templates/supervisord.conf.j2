@@ -4,5 +4,8 @@ nodaemon=true
 {% for program in supervisor_programs %}
 [program:{{ program.name }}]
 command={{ program.command }}
+{% if 'directory' in program %}
+directory={{ program.directory }}
+{% endif %}
 
 {% endfor %}

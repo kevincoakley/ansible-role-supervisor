@@ -16,7 +16,7 @@ Role Variables
 List of programs that should be managed by supervisord:
 
     supervisor_programs:
-        - { name: "program_name", command: "/usr/bin/program -d" }
+        - { name: "program_name", command: "/usr/bin/program -d", directory: "/tmp/" }
 
 Dependencies
 ------------
