@@ -15,18 +15,12 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
-    groups:
-      - zookeeper
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-playbook.yml}
-  inventory:
-    host_vars:
-      instance:
-        zookeeper_id: 0
 scenario:
   name: default
 verifier:
