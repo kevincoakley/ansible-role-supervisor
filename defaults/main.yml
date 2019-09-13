@@ -1,2 +1,4 @@
 ---
 supervisor_programs: []
+supervisor_service_group: root
+supervisor_service_username: root

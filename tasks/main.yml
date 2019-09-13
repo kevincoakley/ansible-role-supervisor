@@ -1,24 +1,27 @@
 ---
-- name: Download and install supervisor (apt)
-  apt: name={{ item }} state=installed
-  with_items:
-    - supervisor
-  when: ansible_os_family == "Debian"
-
-- name: Download and install epel (yum)
-  yum: name={{ item }} state=installed
-  with_items:
-    - epel-release
+- name: Download and install epel (RedHat)
+  package:
+    name: epel-release
+    state: present
   when: ansible_os_family == "RedHat"
 
-- name: Download and install supervisor (yum)
-  yum: name={{ item }} state=installed
-  with_items:
-    - supervisor
-  when: ansible_os_family == "RedHat"
+- name: Download and install supervisor
+  package:
+    name: supervisor
+    state: present
 
 - name: Make sure /etc/supervisor/conf.d/ exists
-  file: path=/etc/supervisor/conf.d state=directory owner=root group=root mode=0755
+  file:
+    path: /etc/supervisor/conf.d
+    state: directory
+    owner: "{{ supervisor_service_username }}"
+    group: "{{ supervisor_service_group }}"
+    mode: 0755
 
 - name: Copy /etc/supervisor/conf.d/supervisord.conf
-  template: src=supervisord.conf.j2 dest=/etc/supervisor/conf.d/supervisord.conf
+  template:
+    src: supervisord.conf.j2
+    dest: /etc/supervisor/conf.d/supervisord.conf
+    owner: "{{ supervisor_service_username }}"
+    group: "{{ supervisor_service_group }}"
+    mode: 0644
