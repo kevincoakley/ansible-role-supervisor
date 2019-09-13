@@ -1,0 +1,15 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+
+  vars:
+    supervisor_programs:
+      - name: ls
+        command: ls -al
+        directory: /var/
+      - name: du
+        command: du -h
+
+  roles:
+    - ansible-role-supervisor
